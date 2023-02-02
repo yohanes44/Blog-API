@@ -70,22 +70,81 @@
 </head>
 
   <body>
+  
     <div class="container">
-      <h1>User</h1>
-      <form action="/api/users" method="post">
-        <h3>Create a New User</h3>
-        <p><code>POST /api/user</code></p>
+      <h1>Authentication</h1>
+     <form action="/api/users" method="post">
+         <h3>Login</h3>
+         <p><code>POST /api/auth/login</code></p>
+         <p>request body</p>
+         <ul>
+           <li><p>username<code>String</code></p></li>
+           <li>password<code>String</code></li>
+         </ul>
+       </form>
+
+       <form action="/api/users" method="post">
+         <h3>Logout</h3>
+         <p><code>POST /api/auth/logout</code></p>
+       </form>
+
+       <form action="/api/users" method="post">
+        <h3>Register</h3>
+        <p><code>POST /api/auth/register</code></p>
         <p>request body</p>
         <ul>
           <li><p>username<code>String</code></p></li>
           <li>password<code>String</code></li>
         </ul>
       </form>
+ </div>
 
+
+    <div class="container">
+         <h1>Blog</h1>
+        <form action="/api/users" method="post">
+            <h3>post a New Blog</h3>
+            <p><code>POST /api/blog</code></p>
+            <p>request body</p>
+            <ul>
+              <li><p>Categories <code>[String]</code></p></li>
+              <li>title <code>String</code></li>
+              <li>detail <code>String</code></li>
+            </ul>
+          </form>
+          <form action="/api/users" method="post">
+            <h3>Delete a blog</h3>
+            <p><code>DELETE /api/blog:blogId</code></p>
+          </form>
+          <form action="/api/users" method="post">
+            <h3>Update a blog</h3>
+            <p><code>PUT /api/blog:blogId</code></p>
+            <p>request body</p>
+            <ul>
+              <li><p>Categories <code>[String]</code></p></li>
+              <li>title <code>String</code></li>
+              <li>detail <code>String</code></li>
+            </ul>
+          </form>
+          <form action="/api/users" method="post">
+            <h3>get Blogs</h3>
+            <p><code>GET /api/blog?username='username'</code></p>
+
+          </form>
+    </div>
+
+
+    <div class="container">
+      <h1>User Account</h1>
+
+      <form id="exercise-form" method="post">
+        <h3>GET user</h3>
+        <p><code>POST /api/user?username='username'</code></p>
+      </form>
 
       <form id="exercise-form" method="post">
         <h3>Delete user</h3>
-        <p><code>POST /api/user/:userId</code></p>
+        <p><code>DELETE /api/user/:userId</code></p>
         <p>request body</p>
         <ul>
           <li><p>userId<code>String</code></p></li>
@@ -94,7 +153,7 @@
 
       <form id="exercise-form" method="post">
         <h3>Update user</h3>
-        <p><code>POST /api/user/:userId</code></p>
+        <p><code>PUT /api/user/:userId</code></p>
         <p>request body</p>
         <ul>
           <li><p>username<code>String</code></p></li>
@@ -102,67 +161,10 @@
         </ul>
       </form>
 
-      <form id="exercise-form" method="post">
-        <h3>Get user</h3>
-        <p><code>POST /api/user?username='username'</code></p>
-      </form>
+   
   
     </div>
-
-
-
-
-    <div class="container">
-         <h1>Post</h1>
-        <form action="/api/users" method="post">
-            <h3>Create a New Post</h3>
-            <p><code>POST /api/post</code></p>
-            <p>request body</p>
-            <ul>
-              <li><p>Categories <code>[String]</code></p></li>
-              <li>title <code>String</code></li>
-              <li>detail <code>String</code></li>
-            </ul>
-          </form>
-          <form action="/api/users" method="post">
-            <h3>Delete a Post</h3>
-            <p><code>POST /api/post:postId</code></p>
-          </form>
-          <form action="/api/users" method="post">
-            <h3>Update a Post</h3>
-            <p><code>POST /api/post:postId</code></p>
-            <p>request body</p>
-            <ul>
-              <li><p>Categories <code>[String]</code></p></li>
-              <li>title <code>String</code></li>
-              <li>detail <code>String</code></li>
-            </ul>
-          </form>
-          <form action="/api/users" method="post">
-            <h3>get Post</h3>
-            <p><code>POST /api/post?username='username'</code></p>
-
-          </form>
-    </div>
-
-
-
-    <div class="container">
-      <h1>Authentication</h1>
-     <form action="/api/users" method="post">
-         <h3>Login</h3>
-         <p><code>POST /api/login</code></p>
-         <p>request body</p>
-         <ul>
-           <li><p>username<code>String</code></p></li>
-           <li>password<code>String</code></li>
-         </ul>
-       </form>
-       <form action="/api/users" method="post">
-         <h3>Logout</h3>
-         <p><code>POST /api/logout</code></p>
-       </form>
- </div>
+  
     <script>
       const exerciseForm = document.getElementById("exercise-form");
 
@@ -173,5 +175,11 @@
         exerciseForm.submit();
       });
     </script>
+
+<div style="padding: 1%; display: flex; justify-content: center; margin-top: 4%; background-color: #87D37C; ">
+  <h6 style="color: black; font-size: 12px">Developed by <strong> <a target="_blank" style="color: black;" href="https://github.com/yohanes44">  Yohanes Debebe</a></strong></h6>
+</div>
   </body>
+
+
 </html>

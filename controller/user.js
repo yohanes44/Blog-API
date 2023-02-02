@@ -23,18 +23,18 @@ async function getUser (req, res) {
 }
 
 
-async function newUser (req, res) {
+// async function newUser (req, res) {
   
-    try{
-        const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hash(req.body.password, salt)
-        const newUser  = await new User(req.body)
-        newUser.save();
-        res.status(200).json({success: true, result: newUser});
-    }catch(error){
-        res.status(500).json({success: false, result: error.message})
-    }
-}
+//     try{
+//         const salt = await bcrypt.genSalt(10);
+//         req.body.password = await bcrypt.hash(req.body.password, salt)
+//         const newUser  = await new User(req.body)
+//         newUser.save();
+//         res.status(200).json({success: true, result: newUser});
+//     }catch(error){
+//         res.status(500).json({success: false, result: error.message})
+//     }
+// }
 
 
 async function updateuser (req, res) {
@@ -116,4 +116,4 @@ async function deleteUser (req, res) {
 }
 
 
-module.exports = {getUser, newUser, deleteUser, updateuser}
+module.exports = {getUser, deleteUser, updateuser}

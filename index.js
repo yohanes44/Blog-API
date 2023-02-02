@@ -32,7 +32,7 @@ app.use("/api/auth", routerAuth);
 
 
 
-app.get("/",isLogedIn, (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(__dirname + "/view/home.html");
 })
 app.get("/login", (req, res, next) => {

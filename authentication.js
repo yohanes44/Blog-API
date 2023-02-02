@@ -84,6 +84,25 @@ function isLogedOut(req, res, next) {
     }
 }
 
+// function loginAuthenticator (req, res, next) {
+//     const logedIn = req.isAuthenticated();
+//     console.log(logedIn);
+//     if(logedIn){
+//         req.logout(function(err) {
+//             if (err) {
+//                 return err; 
+//             }
+//         });
+//         // return  res.json('Succesfully LogedIn');
+//         return next();
+//     }
+//     else if(!logedIn){
+//         // return next();
+//         return  res.json('already Logedout');
+//     }
+// }
+
+
 
 
 

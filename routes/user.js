@@ -8,7 +8,7 @@ const express = require("express");
 
 const router = require("express").Router();
 
-const {getUser, deleteUser, updateuser, newUser} = require("../controller/user");
+const {getUser, deleteUser, updateuser} = require("../controller/user");
 const {auth, isLogedIn, isLogedOut} = require("../authentication");
 
 
@@ -18,13 +18,14 @@ router.get("/",isLogedIn, getUser);
 
 
 // new user
-router.post("/", newUser);
+// router.post("/");
 
 
 // update user
 router.put("/:userId",isLogedIn, updateuser)
 
 // delete user
-router.delete("/:userId",isLogedIn, deleteUser)
+router.delete("/:userId",isLogedIn, deleteUser);
+
 
 module.exports = router;
