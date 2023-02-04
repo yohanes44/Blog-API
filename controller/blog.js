@@ -46,13 +46,13 @@ async function updateBlog (req, res){
                     blog.detail = req.body.detail;
                 }
                 blog.save();
-                return res.status(200).json({success: true, result: "blog updated succesfully"});
+                return res.status(200).json({success: true, message: "blog updated succesfully"});
             }
             else if(blog.username != req.user.username){
-                return res.status(404).json({success: false, result: "You cant update a blog other than yours"});
+                return res.status(404).json({success: false, message: "You cant update a blog other than yours"});
             }   
         }else if(!blog){
-            return res.status(404).json({success: false, result: "blog Not Found"});
+            return res.status(404).json({success: false, message: "blog Not Found"});
         }
     }
     catch(error){
@@ -68,14 +68,14 @@ async function deleteBlog (req, res) {
         if(blog){
             if(blog.username == req.user.username){
                 blog.remove();
-                return res.status(200).json({success: true, result: "blog deleted succesfully"});
+                return res.status(200).json({success: true, message: "blog deleted succesfully"});
             }
             else if(blog.username != req.user.username){
-                return res.status(404).json({success: false, result: "You cant delete a blog other than yours"});
+                return res.status(404).json({success: false, message: "You cant delete a blog other than yours"});
             }   
         }
         else if(!blog){
-            return res.status(500).json({success: false, result: "There is No blog with this ID!"});
+            return res.status(500).json({success: false, message: "There is No blog with this ID!"});
         }
        
 

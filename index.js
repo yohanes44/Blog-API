@@ -40,7 +40,7 @@ app.get("/login", (req, res, next) => {
         return next();
     }
     else if(req.isAuthenticated()){
-        return res.status(404).json({success: false, result: "You are already loggedIn"});
+        return res.status(404).json({success: false, message: "You are already loggedIn"});
     }
 },login)
 

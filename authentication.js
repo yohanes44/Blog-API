@@ -62,7 +62,7 @@ function isLogedIn(req, res, next) {
         return next();
     }
     else if(!isLogedIn){
-    return res.redirect('/login');
+    return res.status(401).json({"success": false, result: "You need to login first"});
     }
 }
 
@@ -80,9 +80,20 @@ function isLogedOut(req, res, next) {
     }
     else if(!isLogedIn){
         // return next();
-        return  res.json('already Logedout');
+        return  res.json({"success": false, message: 'you already Logedout'});
     }
 }
+
+function isLogedOutRegister(req, res, next) {
+    const isLogedIn = req.isAuthenticated();
+    if(!isLogedIn){
+        return next();
+    }
+    else if(isLogedIn){
+    return res.status(401).json({"success": false, result: "You need to logOut first to Signup"});
+    }
+}
+
 
 // function loginAuthenticator (req, res, next) {
 //     const logedIn = req.isAuthenticated();
@@ -106,4 +117,4 @@ function isLogedOut(req, res, next) {
 
 
 
-module.exports = {auth, isLogedIn, isLogedOut};
+module.exports = {auth, isLogedIn, isLogedOut, isLogedOutRegister};

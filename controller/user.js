@@ -77,13 +77,13 @@ async function updateuser (req, res) {
                 }
                 const blogs = await Blog.updateMany({username: req.user.username},  {username: req.body.username});
                 user.save();
-                return res.status(200).json({success: true, result: "User Account updated succesfully"});
+                return res.status(200).json({success: true, message: "User Account updated succesfully"});
             }
             else if(user.username != req.user.username){
-                return res.status(404).json({success: false, result: "You cant update others Account"});
+                return res.status(404).json({success: false, message: "You cant update others Account"});
             }   
         }else if(!user){
-            return res.status(404).json({success: false, result: "user Not Found"});
+            return res.status(404).json({success: false, message: "user Not Found"});
         }
     }
     catch(error){
@@ -99,10 +99,10 @@ async function deleteUser (req, res) {
         try{
             const user = await User.findByIdAndDelete(req.params.userId);
             if(user){
-                res.status(200).json({success: true, result: "Account Deleted Succesfully"})
+                res.status(200).json({success: true, message: "Account Deleted Succesfully"})
             }
             else if(!user){
-                res.status(404).json({success: false, result: "Account Not Found"})
+                res.status(404).json({success: false, message: "Account Not Found"})
             }
         }
         catch(err){
@@ -111,7 +111,7 @@ async function deleteUser (req, res) {
        
       
     }else{
-        res.status(403).json({success: false, result: "You can only delete your Account"});
+        res.status(403).json({success: false, message: "You can only delete your Account"});
     }
 }
 

@@ -9,7 +9,7 @@ function login(req, res, next) {
 
 
 function logOut(req, res, next) {
-    res.json({success: true, Message: "LogedOut Success"});
+    res.json({success: true, Message: "LogedOut Succesfully"});
 }
 
 function homeBlog (req, res){

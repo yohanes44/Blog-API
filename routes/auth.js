@@ -15,7 +15,7 @@ const Blog = require("../model/blog");
 const Category = require("../model/category");
 
 const router = require("express").Router();
-const {isLogedIn, isLogedOut} = require("../authentication");
+const {isLogedIn, isLogedOut, isLogedOutRegister} = require("../authentication");
 const {login, logOut, homeBlog, register} = require("../controller/auth");
 
 
@@ -25,13 +25,13 @@ router.post('/login',(req, res, next) => {
         const isLogedIn = req.isAuthenticated();
         console.log(isLogedIn);
         if(isLogedIn){
-            return  res.json('already LogedIn');  
+            return  res.json({success: false, message: 'you already LogedIn'});  
         }
         else if(!isLogedIn){
             return next();
         }
-    }, passport.authenticate('local',  { failureRedirect: '/login', failureMessage: true }), (req, res)=>{
-    res.status(200).json({success: true, result: "LogedIn Succesfully"})
+    }, passport.authenticate('local',  { failureRedirect: '/loginFailure', failureMessage: true }), (req, res)=>{
+    res.status(200).json({success: true, message: "LogedIn Succesfully"})
 });
 
 
@@ -49,9 +49,13 @@ router.post('/login',(req, res, next) => {
 
 router.post('/logout', isLogedOut ,logOut);
 
-router.post('/register', isLogedOut ,register);
+router.post('/register', isLogedOutRegister, register);
 
 router.get('/', isLogedIn ,homeBlog)
+router.get('/loginFailure' ,(req, res) => {
+    res.status(403).json({success: false, message: "Login Failed"});
+})
+
 
 
 module.exports  =  router;
